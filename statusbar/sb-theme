@@ -1,0 +1,48 @@
+#!/bin/sh
+#
+# One-dark colorscheme
+color0="#1e222a"
+color1="#282c34"
+color2="#e06c75"
+color3="#98c379"
+color4="#61afef"
+color5="#c678dd"
+color6="#56b6c2"
+color7="#545862"
+color8="#abb2bf"
+color9="#c8ccd4"
+
+
+# Gruvbox colorscheme
+#color0="#1d2021" # black
+#color1="#cc241d" # Red
+#color2="#98971a" # green
+#color3="#d79921" # yellow
+#color4="#458588" # blue
+#color5="#b16286" # purple
+#color7="#bdae93" # fg
+#color8="#ebdbb2" # fg 2
+display() {
+    args=""
+    case $1 in
+        -n) args="-n"; shift ;;
+    esac
+
+    if [ -n "${2+x}" ]; then
+        color=$8
+	else
+		case "$(basename $0)" in
+            sb-rec) color="$color2" ;;
+            sb-updates) color="$color8" ;;
+            sb-cpu) color="$color9" ;;
+            sb-memory) color="$color8" ;;
+            sb-volume) color="$color8";;
+            sb-dunst) color="$color7" ;;
+#            sb-lock) color="$color8" ;;
+#            sb-mic) color="color7" ;;
+            sb-date) color="$color9";;
+            *) color="$color8" ;;
+        esac
+    fi
+    echo $args "^c$color^$1"
+}

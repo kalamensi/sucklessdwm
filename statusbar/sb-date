@@ -1,0 +1,9 @@
+#!/bin/sh
+case $BLOCK_BUTTON in
+    1) dunst-calendar && notify-send "Appointments" "$(calcurse -d3)" ;;
+    3) st -e calcurse ;;
+    6) "$TERMINAL" -e "$EDITOR" "$0" ;;
+esac
+. sb-theme
+display "$(date '+%d-%m %H:%M')"
+
